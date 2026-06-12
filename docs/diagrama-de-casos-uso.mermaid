@@ -1,0 +1,138 @@
+---
+title: Diagrama de Casos de Uso — FLORESCER
+---
+graph LR
+
+%% ═══════════════════════════════════════════════════════════════
+%%  ATORES
+%% ═══════════════════════════════════════════════════════════════
+
+    MARIA(["Usuária\nMaria"])
+    LIDER(["Liderança\nde Coletivo"])
+    ADMIN(["Administradora"])
+    SUPA(["Supabase\nAuth / BD"])
+
+%% ═══════════════════════════════════════════════════════════════
+%%  SISTEMA — CASOS DE USO agrupados por módulo
+%% ═══════════════════════════════════════════════════════════════
+
+    subgraph SISTEMA ["FLORESCER — Sistema"]
+
+        %% ── Acesso público ──────────────────────────────────────
+        subgraph PUB ["Acesso público"]
+            UC01(["UC01\nVisualizar lista\nde coletivos"])
+            UC02(["UC02\nConsultar perfil\ndo coletivo"])
+            UC03(["UC03\nNavegar no\nmapa interativo"])
+            UC04(["UC04\nBuscar por nome\nou área de atuação"])
+            UC05(["UC05\nConsultar contatos\nde emergência"])
+            UC06(["UC06\nVisualizar calendário\nde eventos"])
+            UC07(["UC07\nCompartilhar coletivo\npelo WhatsApp"])
+        end
+
+        %% ── Autenticação ────────────────────────────────────────
+        subgraph AUTH ["Autenticação"]
+            UC08(["UC08\nRealizarlogin\npor e-mail"])
+            UC09(["UC09\nRecuperar\nsenha"])
+        end
+
+        %% ── Painel da liderança ─────────────────────────────────
+        subgraph PAINEL ["Painel da Liderança"]
+            UC10(["UC10\nCadastrar\ncoletivo"])
+            UC11(["UC11\nAtualizar dados\ndo coletivo"])
+            UC12(["UC12\nCadastrar\nevento"])
+            UC13(["UC13\nEditar ou cancelar\nevento"])
+            UC14(["UC14\nAtualizar foto\ne descrição"])
+        end
+
+        %% ── Painel administrativo ───────────────────────────────
+        subgraph PADMIN ["Painel Administrativo"]
+            UC15(["UC15\nAprovar cadastro\nde coletivo"])
+            UC16(["UC16\nRejeitar cadastro\nde coletivo"])
+            UC17(["UC17\nGerenciar contatos\nde emergência"])
+            UC18(["UC18\nDesativar coletivo\ncadastrado"])
+        end
+
+    end
+
+%% ═══════════════════════════════════════════════════════════════
+%%  RELAÇÕES: USUÁRIA PÚBLICA
+%% ═══════════════════════════════════════════════════════════════
+
+    MARIA --- UC01
+    MARIA --- UC02
+    MARIA --- UC03
+    MARIA --- UC04
+    MARIA --- UC05
+    MARIA --- UC06
+    MARIA --- UC07
+
+%% ═══════════════════════════════════════════════════════════════
+%%  RELAÇÕES: LIDERANÇA
+%% ═══════════════════════════════════════════════════════════════
+
+    LIDER --- UC08
+    LIDER --- UC10
+    LIDER --- UC11
+    LIDER --- UC12
+    LIDER --- UC13
+    LIDER --- UC14
+
+    %% A liderança também acessa o público
+    LIDER --- UC01
+    LIDER --- UC06
+
+%% ═══════════════════════════════════════════════════════════════
+%%  RELAÇÕES: ADMINISTRADORA
+%% ═══════════════════════════════════════════════════════════════
+
+    ADMIN --- UC08
+    ADMIN --- UC15
+    ADMIN --- UC16
+    ADMIN --- UC17
+    ADMIN --- UC18
+
+%% ═══════════════════════════════════════════════════════════════
+%%  RELAÇÕES: SISTEMA EXTERNO (Supabase)
+%% ═══════════════════════════════════════════════════════════════
+
+    UC08 --- SUPA
+    UC09 --- SUPA
+    UC10 --- SUPA
+    UC11 --- SUPA
+    UC12 --- SUPA
+    UC15 --- SUPA
+
+%% ═══════════════════════════════════════════════════════════════
+%%  INCLUDE / EXTEND
+%% ═══════════════════════════════════════════════════════════════
+
+    UC10 -->|"«include»"| UC08
+    UC11 -->|"«include»"| UC08
+    UC12 -->|"«include»"| UC08
+    UC13 -->|"«include»"| UC08
+    UC14 -->|"«include»"| UC08
+    UC15 -->|"«include»"| UC08
+    UC16 -->|"«include»"| UC08
+    UC17 -->|"«include»"| UC08
+    UC18 -->|"«include»"| UC08
+
+    UC09 -->|"«extend»"| UC08
+    UC07 -->|"«extend»"| UC02
+
+%% ═══════════════════════════════════════════════════════════════
+%%  ESTILOS — paleta FLORESCER
+%% ═══════════════════════════════════════════════════════════════
+
+    classDef ator     fill:#F4E7D8,stroke:#8B5A7A,color:#5A2E52,font-weight:bold
+    classDef publico  fill:#F6D1C9,stroke:#D96B4D,color:#5A2E52
+    classDef authcs   fill:#EFC0B2,stroke:#B07CC6,color:#5A2E52
+    classDef lidercs  fill:#E8B28A,stroke:#D96B4D,color:#5A2E52
+    classDef admincs  fill:#F0E0F0,stroke:#8B5A7A,color:#5A2E52
+    classDef externo  fill:#DDD0E8,stroke:#5A2E52,color:#5A2E52
+
+    class MARIA,LIDER,ADMIN ator
+    class UC01,UC02,UC03,UC04,UC05,UC06,UC07 publico
+    class UC08,UC09 authcs
+    class UC10,UC11,UC12,UC13,UC14 lidercs
+    class UC15,UC16,UC17,UC18 admincs
+    class SUPA externo
