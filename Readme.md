@@ -69,8 +69,6 @@ florescer/
 
 ## Como rodar localmente
 
-```
-
 
 ## Identidade visual
 
