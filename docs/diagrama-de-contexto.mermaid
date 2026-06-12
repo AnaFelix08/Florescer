@@ -1,0 +1,99 @@
+---
+title: Diagrama de Contexto — FLORESCER
+---
+graph TD
+
+%% ─── ATORES EXTERNOS ───────────────────────────────────────────────────────
+
+    U1["👤 Maria\nUsuária em busca de apoio\nBaixo letramento digital"]
+    U2["👤 Valéria / Liderança\nGerencia coletivo\nPainel administrativo"]
+    U3["👤 Fernanda\nVoluntária / apoiadora\nAlta fluência digital"]
+    ADM["👤 Administradora\nEquipe do projeto\nModera cadastros"]
+
+    COL1["🌸 Mulheres Empoderadas"]
+    COL2["🌸 Roda Sagrada de Mulheres"]
+    COL3["🌸 Baque Mulher SJBVista"]
+    COL4["🌸 FeminIF"]
+    COL5["🌸 Mulheres de Coração SJBVista"]
+
+    IFSP["🏫 IFSP — Câmpus SJBVista\nOrientação: Profa. Rosana\nEdital nº 25/2025"]
+    VER["🏛️ Vereadora Local\nArticulação com coletivos"]
+
+%% ─── SISTEMA CENTRAL ────────────────────────────────────────────────────────
+
+    subgraph FLORESCER ["🌺  FLORESCER — Hub Digital dos Coletivos Femininos"]
+        direction TB
+
+        DIR["📋 Diretório de Coletivos\nPerfil · fotos · contato"]
+        MAP["🗺️ Mapa Interativo\nLocalização dos coletivos\ne serviços de apoio"]
+        CAL["📅 Calendário de Eventos\nReuniões e atividades"]
+        PANEL["⚙️ Painel Administrativo\nAtualização autônoma\nsem suporte técnico"]
+        BUSCA["🔍 Busca\nPor nome ou área de atuação"]
+        CONTATOS["📞 Contatos de Emergência\nRede de apoio"]
+        AUTH["🔒 Autenticação\nE-mail seguro"]
+    end
+
+%% ─── INFRAESTRUTURA TÉCNICA ─────────────────────────────────────────────────
+
+    subgraph INFRA ["☁️  Infraestrutura (gratuita / serverless)"]
+        VERCEL["Vercel\nHospedagem"]
+        SUPABASE["Supabase\nBanco de dados · Auth"]
+        GITHUB["GitHub\nVersionamento"]
+        FIGMA["Figma\nProtótipos"]
+    end
+
+%% ─── INTERAÇÕES: USUÁRIAS → SISTEMA ─────────────────────────────────────────
+
+    U1 -->|"Encontra coletivo próximo\nvia celular"| MAP
+    U1 -->|"Acessa contatos\nde emergência"| CONTATOS
+    U3 -->|"Busca coletivos\npor área"| BUSCA
+    U3 -->|"Consulta agenda\nde eventos"| CAL
+
+%% ─── INTERAÇÕES: LIDERANÇAS → SISTEMA ───────────────────────────────────────
+
+    U2 -->|"Autentica e acessa"| AUTH
+    AUTH -->|"Libera acesso ao"| PANEL
+    U2 -->|"Atualiza perfil\nevento · foto · contato"| PANEL
+    PANEL -->|"Reflete alterações em"| DIR
+    PANEL -->|"Reflete alterações em"| CAL
+
+%% ─── INTERAÇÕES: ADMINISTRADORA → SISTEMA ───────────────────────────────────
+
+    ADM -->|"Modera cadastros\naprovação / rejeição"| PANEL
+    ADM -->|"Gerencia rede\nde contatos"| CONTATOS
+
+%% ─── COLETIVOS ↔ DIRETÓRIO ──────────────────────────────────────────────────
+
+    COL1 & COL2 & COL3 & COL4 & COL5 -->|"Cadastro de perfil"| DIR
+    DIR -->|"Exibe no"| MAP
+
+%% ─── ARTICULAÇÃO INSTITUCIONAL ───────────────────────────────────────────────
+
+    VER -->|"Articula parceria\ncom coletivos"| COL1
+    VER -->|"Articula parceria\ncom coletivos"| COL2
+    VER -->|"Articula parceria\ncom coletivos"| COL3
+    VER -->|"Articula parceria\ncom coletivos"| COL4
+    VER -->|"Articula parceria\ncom coletivos"| COL5
+
+    IFSP -->|"Orientação acadêmica\nedital · extensão"| FLORESCER
+
+%% ─── INFRA ↔ SISTEMA ─────────────────────────────────────────────────────────
+
+    FLORESCER -->|"Deploy contínuo"| VERCEL
+    FLORESCER -->|"Leitura / escrita\nde dados"| SUPABASE
+    FLORESCER -->|"Versionamento\nde código"| GITHUB
+    FIGMA -->|"Protótipos de UI"| FLORESCER
+
+%% ─── ESTILOS ─────────────────────────────────────────────────────────────────
+
+    classDef usuario    fill:#F6D1C9,stroke:#D96B4D,color:#5A2E52,font-weight:bold
+    classDef coletivo   fill:#EFC0B2,stroke:#B07CC6,color:#5A2E52
+    classDef sistema    fill:#F4E7D8,stroke:#D96B4D,color:#5A2E52
+    classDef infra      fill:#E8B28A,stroke:#D96B4D,color:#5A2E52
+    classDef externo    fill:#F0E0F0,stroke:#8B5A7A,color:#5A2E52
+
+    class U1,U2,U3,ADM usuario
+    class COL1,COL2,COL3,COL4,COL5 coletivo
+    class DIR,MAP,CAL,PANEL,BUSCA,CONTATOS,AUTH sistema
+    class VERCEL,SUPABASE,GITHUB,FIGMA infra
+    class IFSP,VER externo
