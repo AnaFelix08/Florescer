@@ -1,0 +1,135 @@
+---
+title: Diagrama de Sequencia — Fluxo Principal FLORESCER
+---
+sequenceDiagram
+    autonumber
+
+    actor Usuaria as Usuaria (publica)
+    actor Lideranca as Lideranca
+    actor Administradora as Administradora
+    participant Frontend as Frontend (Vercel)
+    participant Auth as Supabase Auth
+    participant BD as Supabase BD
+
+%% ═══════════════════════════════════════════════════════════════
+%%  1. ACESSO PUBLICO
+%% ═══════════════════════════════════════════════════════════════
+
+    rect rgb(246, 209, 201)
+        Note over Usuaria, BD: Acesso publico — sem autenticacao
+
+        Usuaria->>Frontend: Acessa a plataforma
+        Frontend->>BD: Busca coletivos aprovados
+        BD-->>Frontend: Retorna lista de coletivos
+        Frontend-->>Usuaria: Exibe diretorio e mapa
+
+        Usuaria->>Frontend: Busca por nome ou area
+        Frontend->>BD: Consulta com filtro
+        BD-->>Frontend: Retorna resultados
+        Frontend-->>Usuaria: Exibe coletivos filtrados
+
+        Usuaria->>Frontend: Abre perfil do coletivo
+        Frontend->>BD: Busca dados do coletivo
+        BD-->>Frontend: Retorna perfil completo
+        Frontend-->>Usuaria: Exibe pagina do coletivo
+
+        Usuaria->>Frontend: Acessa contatos de emergencia
+        Frontend->>BD: Busca contatos ativos
+        BD-->>Frontend: Retorna lista de contatos
+        Frontend-->>Usuaria: Exibe rede de apoio
+    end
+
+%% ═══════════════════════════════════════════════════════════════
+%%  2. AUTENTICACAO
+%% ═══════════════════════════════════════════════════════════════
+
+    rect rgb(239, 192, 178)
+        Note over Lideranca, Auth: Autenticacao — login por e-mail
+
+        Lideranca->>Frontend: Acessa tela de login
+        Frontend-->>Lideranca: Exibe formulario de login
+
+        Lideranca->>Frontend: Envia e-mail e senha
+        Frontend->>Auth: Solicita autenticacao
+        Auth-->>Frontend: Retorna token JWT
+
+        alt Credenciais invalidas
+            Auth-->>Frontend: Retorna erro de autenticacao
+            Frontend-->>Lideranca: Exibe mensagem de erro
+            Lideranca->>Frontend: Solicita recuperacao de senha
+            Frontend->>Auth: Envia e-mail de recuperacao
+            Auth-->>Lideranca: Envia link de redefinicao
+        end
+
+        Frontend-->>Lideranca: Redireciona ao painel
+    end
+
+%% ═══════════════════════════════════════════════════════════════
+%%  3. PAINEL DA LIDERANCA
+%% ═══════════════════════════════════════════════════════════════
+
+    rect rgb(232, 178, 138)
+        Note over Lideranca, BD: Painel da lideranca — gestao do coletivo
+
+        Lideranca->>Frontend: Acessa painel
+        Frontend->>Auth: Valida token JWT
+        Auth-->>Frontend: Token valido
+
+        Lideranca->>Frontend: Cadastra novo coletivo
+        Frontend->>BD: Insere coletivo com status pendente
+        BD-->>Frontend: Confirma insercao
+        Frontend-->>Lideranca: Informa que cadastro aguarda aprovacao
+
+        Lideranca->>Frontend: Atualiza dados do coletivo
+        Frontend->>BD: Atualiza registro do coletivo
+        BD-->>Frontend: Confirma atualizacao
+        Frontend-->>Lideranca: Exibe confirmacao de salvo
+
+        Lideranca->>Frontend: Cadastra novo evento
+        Frontend->>BD: Insere evento vinculado ao coletivo
+        BD-->>Frontend: Confirma insercao
+        Frontend-->>Lideranca: Evento publicado no calendario
+
+        Lideranca->>Frontend: Cancela evento existente
+        Frontend->>BD: Atualiza status do evento para cancelado
+        BD-->>Frontend: Confirma atualizacao
+        Frontend-->>Lideranca: Evento marcado como cancelado
+    end
+
+%% ═══════════════════════════════════════════════════════════════
+%%  4. PAINEL ADMINISTRATIVO
+%% ═══════════════════════════════════════════════════════════════
+
+    rect rgb(240, 224, 240)
+        Note over Administradora, BD: Painel administrativo — moderacao e gestao
+
+        Administradora->>Frontend: Acessa painel administrativo
+        Frontend->>Auth: Valida token JWT com perfil admin
+        Auth-->>Frontend: Token valido — perfil confirmado
+
+        Frontend->>BD: Busca cadastros pendentes
+        BD-->>Frontend: Retorna lista de coletivos pendentes
+        Frontend-->>Administradora: Exibe fila de moderacao
+
+        alt Aprovar cadastro
+            Administradora->>Frontend: Aprova coletivo
+            Frontend->>BD: Atualiza status para aprovado
+            BD-->>Frontend: Confirma atualizacao
+            Frontend-->>Administradora: Coletivo publicado na plataforma
+        else Rejeitar cadastro
+            Administradora->>Frontend: Rejeita com justificativa
+            Frontend->>BD: Atualiza status para rejeitado
+            BD-->>Frontend: Confirma atualizacao
+            Frontend-->>Administradora: Cadastro encerrado
+        end
+
+        Administradora->>Frontend: Edita contatos de emergencia
+        Frontend->>BD: Atualiza lista de contatos
+        BD-->>Frontend: Confirma atualizacao
+        Frontend-->>Administradora: Contatos atualizados
+
+        Administradora->>Frontend: Desativa coletivo cadastrado
+        Frontend->>BD: Atualiza status para inativo
+        BD-->>Frontend: Confirma atualizacao
+        Frontend-->>Administradora: Coletivo removido da listagem publica
+    end
