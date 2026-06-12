@@ -1,0 +1,112 @@
+```mermaid
+classDiagram
+
+    class Usuario {
+        +UUID id
+        +String email
+        +String senha_hash
+        +String tipo
+        +DateTime criado_em
+        +login()
+        +logout()
+        +atualizarSenha()
+    }
+
+    class Lideranca {
+        +UUID id
+        +UUID usuario_id
+        +UUID coletivo_id
+        +String nome
+        +String telefone
+        +Boolean ativa
+        +cadastrarColetivo()
+        +editarPerfil()
+        +cadastrarEvento()
+        +removerEvento()
+    }
+
+    class Administradora {
+        +UUID id
+        +UUID usuario_id
+        +String nome
+        +aprovarColetivo()
+        +recusarColetivo()
+        +removerColetivo()
+        +gerenciarContatos()
+    }
+
+    class Coletivo {
+        +UUID id
+        +String nome
+        +String descricao
+        +String area_atuacao
+        +String email_contato
+        +String telefone
+        +String instagram
+        +String site
+        +String status
+        +Float latitude
+        +Float longitude
+        +String cidade
+        +String bairro
+        +DateTime criado_em
+        +DateTime atualizado_em
+        +atualizarInformacoes()
+        +listarEventos()
+    }
+
+    class Evento {
+        +UUID id
+        +UUID coletivo_id
+        +String titulo
+        +String descricao
+        +Date data
+        +String horario
+        +String local
+        +String modalidade
+        +String link_inscricao
+        +DateTime criado_em
+        +publicar()
+        +cancelar()
+        +editar()
+    }
+
+    class ContatoEmergencia {
+        +UUID id
+        +String nome
+        +String telefone
+        +String tipo
+        +String descricao
+        +String abrangencia
+        +Boolean ativo
+        +DateTime atualizado_em
+    }
+
+    class Busca {
+        +String termo
+        +String area_atuacao
+        +String cidade
+        +buscarPorNome()
+        +buscarPorArea()
+        +buscarPorLocalizacao()
+        +filtrar()
+    }
+
+    class Mapa {
+        +Float latitude_centro
+        +Float longitude_centro
+        +Integer zoom
+        +carregarColetivos()
+        +exibirPerfil()
+        +filtrarPorArea()
+    }
+
+    Usuario "1" --> "0..1" Lideranca : é
+    Usuario "1" --> "0..1" Administradora : é
+    Lideranca "1" --> "1" Coletivo : gerencia
+    Coletivo "1" --> "0..*" Evento : possui
+    Administradora "1" --> "0..*" Coletivo : modera
+    Administradora "1" --> "0..*" ContatoEmergencia : gerencia
+    Busca "1" --> "0..*" Coletivo : retorna
+    Mapa "1" --> "0..*" Coletivo : exibe
+```
