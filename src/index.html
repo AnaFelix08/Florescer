@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLORESCER — Conectando mulheres, fortalecendo redes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     TELA HOME
+════════════════════════════════════════════════ -->
+<div class="tela ativa" id="tela-home">
+
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+    <button class="topbar-btn" onclick="irPara('tela-login')">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Entrar
+    </button>
+  </div>
+
+  <div class="hero">
+    <div class="hero-tag">Hub das mulheres de SJBVista</div>
+    <h1>Encontre sua <em>rede</em> de apoio</h1>
+    <p>Coletivos femininos de Sao Joao da Boa Vista reunidos em um so lugar. Apoio, cultura, empoderamento e sororidade perto de voce.</p>
+    <div class="hero-actions">
+      <button class="btn-primario" onclick="irNav('coletivos')">Ver coletivos</button>
+      <button class="btn-secundario" onclick="irNav('emergencia')">Contatos de apoio</button>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num">5</span>
+      <span class="stat-label">coletivos ativos</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">12</span>
+      <span class="stat-label">eventos em junho</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">8</span>
+      <span class="stat-label">contatos de apoio</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">SJBVista</span>
+      <span class="stat-label">e regiao</span>
+    </div>
+  </div>
+
+  <div class="secao">
+    <p class="secao-titulo">Coletivos em destaque</p>
+    <p class="secao-sub">Conheca as redes que cuidam de voce</p>
+    <div class="grid-coletivos">
+      <div class="card-coletivo" onclick="irPerfil(0)">
+        <div class="card-coletivo-header">
+          <div class="avatar">ME</div>
+          <div>
+            <div class="card-nome">Mulheres Empoderadas</div>
+            <div class="card-lider">Lideranca: Valeria</div>
+          </div>
+        </div>
+        <div class="card-corpo">
+          <span class="card-tag">Empoderamento</span>
+          <p class="card-desc">Espaco de fortalecimento feminino, autoestima e suporte mutuo para mulheres de todas as idades.</p>
+          <div class="card-rodape">
+            <span class="card-local">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              SJBVista — Centro
+            </span>
+            <button class="btn-ver" onclick="event.stopPropagation();irPerfil(0)">Ver perfil</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-coletivo" onclick="irPerfil(1)">
+        <div class="card-coletivo-header" style="background:var(--malva)">
+          <div class="avatar lav">RS</div>
+          <div>
+            <div class="card-nome">Roda Sagrada de Mulheres</div>
+            <div class="card-lider">Lideranca: Elaine Menato</div>
+          </div>
+        </div>
+        <div class="card-corpo">
+          <span class="card-tag" style="color:var(--malva)">Espiritualidade</span>
+          <p class="card-desc">Encontros de cura, ancestralidade e reconexao com o feminino sagrado por meio de rodas e rituais.</p>
+          <div class="card-rodape">
+            <span class="card-local">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              SJBVista — Bela Vista
+            </span>
+            <button class="btn-ver" onclick="event.stopPropagation();irPerfil(1)">Ver perfil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom">
+    <button class="nav-item ativo" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item" onclick="irNav('coletivos')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Coletivos
+    </button>
+    <button class="nav-item" onclick="irNav('mapa')">
+      <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mapa
+    </button>
+    <button class="nav-item" onclick="irNav('eventos')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Eventos
+    </button>
+    <button class="nav-item" onclick="irNav('emergencia')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+      Apoio
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA COLETIVOS
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-coletivos">
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+    <button class="topbar-btn" onclick="irPara('tela-login')">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Entrar
+    </button>
+  </div>
+
+  <div class="secao">
+    <p class="secao-titulo">Coletivos</p>
+    <p class="secao-sub">Encontre redes femininas em Sao Joao da Boa Vista</p>
+
+    <div class="campo-busca">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Buscar por nome ou area..." id="input-busca" oninput="filtrarColetivos()">
+    </div>
+
+    <div class="filtros" id="filtros">
+      <button class="filtro-btn ativo" onclick="setFiltro('Todos', this)">Todos</button>
+      <button class="filtro-btn" onclick="setFiltro('Empoderamento', this)">Empoderamento</button>
+      <button class="filtro-btn" onclick="setFiltro('Espiritualidade', this)">Espiritualidade</button>
+      <button class="filtro-btn" onclick="setFiltro('Cultura', this)">Cultura</button>
+      <button class="filtro-btn" onclick="setFiltro('Universitario', this)">Universitario</button>
+      <button class="filtro-btn" onclick="setFiltro('Apoio mutuo', this)">Apoio mutuo</button>
+    </div>
+
+    <div class="grid-coletivos" id="lista-coletivos">
+    </div>
+  </div>
+
+  <div class="nav-bottom">
+    <button class="nav-item" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item ativo" onclick="irNav('coletivos')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Coletivos
+    </button>
+    <button class="nav-item" onclick="irNav('mapa')">
+      <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mapa
+    </button>
+    <button class="nav-item" onclick="irNav('eventos')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Eventos
+    </button>
+    <button class="nav-item" onclick="irNav('emergencia')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+      Apoio
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA MAPA
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-mapa">
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+  </div>
+
+  <div class="secao">
+    <p class="secao-titulo">Mapa dos coletivos</p>
+    <p class="secao-sub">Toque em um ponto para ver o coletivo</p>
+
+    <div class="mapa-container">
+      <div class="mapa-bg">
+        <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        <span style="font-size:0.78rem;color:var(--malva);font-weight:500">Sao Joao da Boa Vista e regiao</span>
+      </div>
+      <div class="mapa-pins">
+        <div class="pin" style="top:35%;left:45%" onclick="irPerfil(0)">
+          <div class="pin-tooltip">Mulheres Empoderadas</div>
+        </div>
+        <div class="pin" style="top:55%;left:30%;background:var(--malva)" onclick="irPerfil(1)">
+          <div class="pin-tooltip">Roda Sagrada</div>
+        </div>
+        <div class="pin" style="top:28%;left:62%;background:var(--lavanda)" onclick="irPerfil(2)">
+          <div class="pin-tooltip">Baque Mulher</div>
+        </div>
+        <div class="pin" style="top:65%;left:58%;background:var(--terracota)" onclick="irPerfil(3)">
+          <div class="pin-tooltip">FeminIF</div>
+        </div>
+        <div class="pin" style="top:42%;left:22%;background:var(--coral)" onclick="irPerfil(4)">
+          <div class="pin-tooltip">Mulheres de Coracao</div>
+        </div>
+      </div>
+      <div class="mapa-legenda">
+        <strong>5 coletivos</strong> mapeados em SJBVista
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--texto-sec)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--ameixa);display:inline-block"></span>
+        Empoderamento
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--texto-sec)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--malva);display:inline-block"></span>
+        Espiritualidade
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--texto-sec)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--lavanda);display:inline-block"></span>
+        Cultura
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--texto-sec)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--terracota);display:inline-block"></span>
+        Universitario
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--texto-sec)">
+        <span style="width:12px;height:12px;border-radius:50%;background:var(--coral);display:inline-block"></span>
+        Apoio mutuo
+      </span>
+    </div>
+
+    <div style="margin-top:20px">
+      <p class="secao-titulo" style="margin-bottom:12px">Servicos de apoio proximos</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--branco);border:1px solid var(--rosa-cha);border-radius:var(--r-sm);padding:12px 14px;display:flex;align-items:center;gap:12px">
+          <span style="width:36px;height:36px;border-radius:50%;background:var(--creme);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 19.79 19.79 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l.97-1.1a2 2 0 0 1 2.11-.45 19.79 19.79 0 0 0 2.81.7A2 2 0 0 1 22 15z"/></svg>
+          </span>
+          <div>
+            <div style="font-weight:600;font-size:0.85rem;color:var(--ameixa)">CRAM — Centro de Referencia</div>
+            <div style="font-size:0.75rem;color:var(--texto-sec)">Apoio a mulheres em situacao de vulnerabilidade</div>
+          </div>
+        </div>
+        <div style="background:var(--branco);border:1px solid var(--rosa-cha);border-radius:var(--r-sm);padding:12px 14px;display:flex;align-items:center;gap:12px">
+          <span style="width:36px;height:36px;border-radius:50%;background:var(--creme);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--malva)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </span>
+          <div>
+            <div style="font-weight:600;font-size:0.85rem;color:var(--ameixa)">Casa da Mulher Brasileira</div>
+            <div style="font-size:0.75rem;color:var(--texto-sec)">Atendimento integrado e acolhimento</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom">
+    <button class="nav-item" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item" onclick="irNav('coletivos')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Coletivos
+    </button>
+    <button class="nav-item ativo" onclick="irNav('mapa')">
+      <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mapa
+    </button>
+    <button class="nav-item" onclick="irNav('eventos')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Eventos
+    </button>
+    <button class="nav-item" onclick="irNav('emergencia')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+      Apoio
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA EVENTOS
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-eventos">
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+  </div>
+
+  <div class="secao">
+    <p class="secao-titulo">Agenda de eventos</p>
+    <p class="secao-sub">Junho e julho de 2026</p>
+
+    <div class="lista-eventos">
+      <div class="card-evento">
+        <div class="evento-data">
+          <div class="evento-dia">09</div>
+          <div class="evento-mes">JUN</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-titulo">Validacao da plataforma FLORESCER</div>
+          <div class="evento-meta">
+            <span>Sala do IFSP-SBV, 19h</span>
+            <span>Encontro com as liderancas</span>
+          </div>
+          <span class="evento-tag">Presencial</span>
+        </div>
+      </div>
+
+      <div class="card-evento">
+        <div class="evento-data" style="background:var(--malva)">
+          <div class="evento-dia">14</div>
+          <div class="evento-mes">JUN</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-titulo">Roda de Conversa — Saude da Mulher</div>
+          <div class="evento-meta">
+            <span>Praca da Matriz, 15h</span>
+            <span>Roda Sagrada de Mulheres</span>
+          </div>
+          <span class="evento-tag" style="color:var(--malva)">Presencial</span>
+        </div>
+      </div>
+
+      <div class="card-evento">
+        <div class="evento-data" style="background:var(--lavanda)">
+          <div class="evento-dia">21</div>
+          <div class="evento-mes">JUN</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-titulo">Show de Baque Mulher — Solsticio</div>
+          <div class="evento-meta">
+            <span>Anfiteatro Municipal, 18h</span>
+            <span>Baque Mulher SJBVista</span>
+          </div>
+          <span class="evento-tag" style="color:var(--lavanda)">Presencial · Gratuito</span>
+        </div>
+      </div>
+
+      <div class="card-evento">
+        <div class="evento-data" style="background:var(--terracota)">
+          <div class="evento-dia">07</div>
+          <div class="evento-mes">JUL</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-titulo">Avaliacao comunitaria — FLORESCER</div>
+          <div class="evento-meta">
+            <span>IFSP-SBV, 19h45</span>
+            <span>Todas as liderancas</span>
+          </div>
+          <span class="evento-tag" style="color:var(--terracota)">Presencial</span>
+        </div>
+      </div>
+
+      <div class="card-evento">
+        <div class="evento-data" style="background:var(--coral)">
+          <div class="evento-dia">19</div>
+          <div class="evento-mes">JUL</div>
+        </div>
+        <div class="evento-info">
+          <div class="evento-titulo">Oficina de Empreendedorismo Feminino</div>
+          <div class="evento-meta">
+            <span>Online via Google Meet, 14h</span>
+            <span>Mulheres Empoderadas</span>
+          </div>
+          <span class="evento-tag" style="color:var(--coral)">Online · Gratuito</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom">
+    <button class="nav-item" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item" onclick="irNav('coletivos')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Coletivos
+    </button>
+    <button class="nav-item" onclick="irNav('mapa')">
+      <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mapa
+    </button>
+    <button class="nav-item ativo" onclick="irNav('eventos')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Eventos
+    </button>
+    <button class="nav-item" onclick="irNav('emergencia')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+      Apoio
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA EMERGENCIA
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-emergencia">
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+  </div>
+
+  <div class="secao">
+    <p class="secao-titulo">Rede de apoio</p>
+    <p class="secao-sub">Contatos de emergencia e servicos de suporte</p>
+
+    <div style="background:var(--creme);border:1px solid var(--rosa-cha);border-radius:var(--r-md);padding:14px 16px;margin-bottom:20px">
+      <p style="font-size:0.82rem;color:var(--ameixa);font-weight:600;margin-bottom:4px">Precisa de ajuda agora?</p>
+      <p style="font-size:0.78rem;color:var(--texto-sec);line-height:1.5">Ligue gratuitamente para a Central de Atendimento a Mulher. Disponivel 24 horas, 7 dias por semana.</p>
+      <button class="btn-primario" style="margin-top:12px;width:100%;text-align:center" onclick="mostrarToast('Ligando para 180...')">Ligar para o 180</button>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;color:var(--lavanda);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--rosa-cha);padding-bottom:6px">Urgencia e seguranca</p>
+
+    <div class="lista-contatos">
+      <div class="card-contato">
+        <div class="contato-icone urgente">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">Central da Mulher — 180</div>
+          <div class="contato-desc">Denuncia, orientacao e encaminhamento. 24h/dia.</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Ligando para 180...')">180</button>
+      </div>
+
+      <div class="card-contato">
+        <div class="contato-icone urgente">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">Policia Militar</div>
+          <div class="contato-desc">Emergencia. Disponivel 24h.</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Ligando para 190...')">190</button>
+      </div>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;color:var(--lavanda);letter-spacing:0.06em;text-transform:uppercase;margin:20px 0 12px;border-bottom:1px solid var(--rosa-cha);padding-bottom:6px">Apoio psicologico e social</p>
+
+    <div class="lista-contatos">
+      <div class="card-contato">
+        <div class="contato-icone apoio">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">CRAM — SJBVista</div>
+          <div class="contato-desc">Centro de Referencia de Atendimento a Mulher</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Buscando numero...')">Ligar</button>
+      </div>
+
+      <div class="card-contato">
+        <div class="contato-icone apoio">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">CVV — Centro de Valorizacao</div>
+          <div class="contato-desc">Apoio emocional e prevencao. 24h/dia.</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Ligando para 188...')">188</button>
+      </div>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;color:var(--lavanda);letter-spacing:0.06em;text-transform:uppercase;margin:20px 0 12px;border-bottom:1px solid var(--rosa-cha);padding-bottom:6px">Saude</p>
+
+    <div class="lista-contatos">
+      <div class="card-contato">
+        <div class="contato-icone saude">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">UPA SJBVista</div>
+          <div class="contato-desc">Unidade de Pronto Atendimento. 24h/dia.</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Buscando numero...')">Ligar</button>
+      </div>
+
+      <div class="card-contato">
+        <div class="contato-icone saude">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="contato-info">
+          <div class="contato-nome">SAMU</div>
+          <div class="contato-desc">Urgencia medica. Disponivel 24h.</div>
+        </div>
+        <button class="btn-ligar" onclick="mostrarToast('Ligando para 192...')">192</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bottom">
+    <button class="nav-item" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Inicio
+    </button>
+    <button class="nav-item" onclick="irNav('coletivos')">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Coletivos
+    </button>
+    <button class="nav-item" onclick="irNav('mapa')">
+      <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Mapa
+    </button>
+    <button class="nav-item" onclick="irNav('eventos')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Eventos
+    </button>
+    <button class="nav-item ativo" onclick="irNav('emergencia')">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+      Apoio
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA PERFIL COLETIVO
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-perfil">
+  <div class="perfil-header">
+    <button class="perfil-voltar" onclick="history.back(); voltarPerfil()">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Voltar
+    </button>
+    <div class="perfil-topo">
+      <div class="perfil-avatar" id="perfil-avatar">ME</div>
+      <div class="perfil-dados">
+        <div class="perfil-nome" id="perfil-nome">Mulheres Empoderadas</div>
+        <div class="perfil-lider" id="perfil-lider">Lideranca: Valeria</div>
+        <span class="perfil-tag" id="perfil-area">Empoderamento</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="perfil-corpo">
+    <div class="perfil-secao">
+      <div class="perfil-secao-titulo">Sobre o coletivo</div>
+      <p class="perfil-texto" id="perfil-desc">Descricao do coletivo.</p>
+    </div>
+
+    <div class="perfil-secao">
+      <div class="perfil-secao-titulo">Informacoes</div>
+      <div class="perfil-linha">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span id="perfil-local">SJBVista</span>
+      </div>
+      <div class="perfil-linha">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.06 5.06l1.1-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15z"/></svg>
+        <span id="perfil-contato">Contato nao disponivel</span>
+      </div>
+      <div class="perfil-linha">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span id="perfil-encontros">Encontros periodicos</span>
+      </div>
+    </div>
+
+    <div class="perfil-secao">
+      <div class="perfil-secao-titulo">Proximos eventos</div>
+      <div id="perfil-eventos"></div>
+    </div>
+
+    <button class="btn-whats" onclick="mostrarToast('Abrindo WhatsApp...')">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Entrar em contato pelo WhatsApp
+    </button>
+
+    <button class="btn-secundario" style="width:100%;margin-top:10px;color:var(--ameixa);border-color:var(--rosa-cha)" onclick="mostrarToast('Link copiado!')">
+      Compartilhar coletivo
+    </button>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA LOGIN
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-login">
+  <div class="topbar">
+    <button class="topbar-btn" onclick="irNav('home')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Voltar
+    </button>
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+    <div style="width:60px"></div>
+  </div>
+
+  <div class="login-wrap">
+    <div class="login-logo">FLORES<em>CER</em></div>
+    <p class="login-sub">Acesso exclusivo para liderancas e administradora</p>
+
+    <div class="form-grupo">
+      <label class="form-label">E-mail</label>
+      <input class="form-input" type="email" placeholder="seu@email.com" id="login-email">
+    </div>
+    <div class="form-grupo">
+      <label class="form-label">Senha</label>
+      <input class="form-input" type="password" placeholder="Sua senha" id="login-senha">
+    </div>
+    <p class="login-esqueci" onclick="mostrarToast('Link de recuperacao enviado!')">Esqueci minha senha</p>
+    <button class="btn-login" onclick="fazerLogin()">Entrar na plataforma</button>
+
+    <div class="login-divider">acesso restrito</div>
+
+    <p style="font-size:0.8rem;color:var(--texto-sec);text-align:center;line-height:1.5">
+      Nao tem acesso? Solicite a sua lideranca de coletivo ou entre em contato com a administradora do FLORESCER.
+    </p>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     TELA PAINEL
+════════════════════════════════════════════════ -->
+<div class="tela" id="tela-painel">
+  <div class="topbar">
+    <span class="topbar-logo">FLORES<span>CER</span></span>
+    <button class="topbar-btn" onclick="irNav('home');irPara('tela-home')">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sair
+    </button>
+  </div>
+
+  <div class="painel-boas">
+    <p>Ola, lideranca!</p>
+    <h2>Bem-vinda ao seu painel</h2>
+    <div class="painel-coletivo">
+      <strong>Mulheres Empoderadas</strong>
+      Lideranca: Valeria · SJBVista
+    </div>
+  </div>
+
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    Coletivo publicado e visivel
+  </div>
+
+  <div class="grid-acoes">
+    <div class="acao-card" onclick="mostrarToast('Editando perfil do coletivo...')">
+      <div class="acao-icone">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      </div>
+      <div class="acao-titulo">Editar perfil</div>
+      <div class="acao-desc">Atualize dados, foto e descricao do seu coletivo</div>
+    </div>
+
+    <div class="acao-card" onclick="mostrarToast('Abrindo gestao de eventos...')">
+      <div class="acao-icone">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="acao-titulo">Gerenciar eventos</div>
+      <div class="acao-desc">Cadastre e edite eventos do seu coletivo</div>
+    </div>
+
+    <div class="acao-card" onclick="mostrarToast('Abrindo contatos...')">
+      <div class="acao-icone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12"/></svg>
+      </div>
+      <div class="acao-titulo">Contatos</div>
+      <div class="acao-desc">Atualize o contato do coletivo</div>
+    </div>
+
+    <div class="acao-card" onclick="mostrarToast('Abrindo visualizacao publica...')">
+      <div class="acao-icone">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="acao-titulo">Ver como publica</div>
+      <div class="acao-desc">Veja como sua pagina aparece para as mulheres</div>
+    </div>
+  </div>
+
+  <div style="padding:0 20px 20px">
+    <p style="font-size:0.78rem;font-weight:700;color:var(--lavanda);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--rosa-cha);padding-bottom:6px">Atividade recente</p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--texto-sec)">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--lavanda);flex-shrink:0"></span>
+        Perfil atualizado — 3 dias atras
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--texto-sec)">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0"></span>
+        Evento "Oficina de Empreendedorismo" publicado — 5 dias atras
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--texto-sec)">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--bege);flex-shrink:0"></span>
+        Coletivo aprovado e publicado — 12 dias atras
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
