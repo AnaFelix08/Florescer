@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administradoras` (
   `Adm_Nivel_Acesso` int(11) DEFAULT NULL,
-  `Adm_ID` int(11) NOT NULL,
+  `Adm_ID` int(11) NOT NULL AUTO_INCREMENT,
   `fk_Usuarios_Usu_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,7 +49,7 @@ INSERT INTO `administradoras` (`Adm_Nivel_Acesso`, `Adm_ID`, `fk_Usuarios_Usu_ID
 --
 
 CREATE TABLE `coletivos` (
-  `Col_ID` int(11) NOT NULL,
+  `Col_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Col_Nome` varchar(100) DEFAULT NULL,
   `Col_Descricao` varchar(250) DEFAULT NULL,
   `Col_Are_Atuacao` varchar(15) DEFAULT NULL,
@@ -81,7 +81,7 @@ INSERT INTO `coletivos` (`Col_ID`, `Col_Nome`, `Col_Descricao`, `Col_Are_Atuacao
 --
 
 CREATE TABLE `contatosemergencia` (
-  `CoE_ID` int(11) NOT NULL,
+  `CoE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `CoE_Nome` varchar(100) DEFAULT NULL,
   `CoE_Telefone` varchar(14) DEFAULT NULL,
   `CoE_Tipo` varchar(20) DEFAULT NULL,
@@ -107,7 +107,7 @@ INSERT INTO `contatosemergencia` (`CoE_ID`, `CoE_Nome`, `CoE_Telefone`, `CoE_Tip
 --
 
 CREATE TABLE `eventos` (
-  `Eve_ID` int(11) NOT NULL,
+  `Eve_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Eve_Titulo` varchar(100) DEFAULT NULL,
   `Eve_Descricao` varchar(250) DEFAULT NULL,
   `Eve_Data` datetime DEFAULT NULL,
@@ -133,7 +133,7 @@ INSERT INTO `eventos` (`Eve_ID`, `Eve_Titulo`, `Eve_Descricao`, `Eve_Data`, `Eve
 --
 
 CREATE TABLE `liderancas` (
-  `Lid_ID` int(11) NOT NULL,
+  `Lid_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Lid_Nome` varchar(100) DEFAULT NULL,
   `Lid_Telefone` varchar(14) DEFAULT NULL,
   `fk_Usuarios_Usu_ID` int(11) NOT NULL,
@@ -182,7 +182,7 @@ INSERT INTO `organiza` (`fk_Coletivos_Col_ID`, `fk_Eventos_Eve_ID`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `Usu_ID` int(11) NOT NULL,
+  `Usu_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Usu_Email` varchar(80) DEFAULT NULL,
   `Usu_Senha` varchar(30) DEFAULT NULL,
   `Usu_Criado_Em` datetime DEFAULT NULL
